@@ -51,8 +51,13 @@ body {
   padding: 12px 16px;
   color: #fff;
   border-radius: 5px;
+  text-decoration: none;
 }
 
+.menu-list a {
+  text-decoration: none;
+  color: #098178;
+}
 .container {
   display: flex;
   justify-content: space-between;
@@ -120,6 +125,8 @@ body {
   border: 1px solid #ddd;
   border-radius: 5px;
   padding: 10px;
+  min-height: 500px;
+  height: 100%;
 }
 
 .product-list .product-item:hover {
@@ -128,6 +135,17 @@ body {
   transform: translateY(-5px);
   cursor: pointer;
 }
+
+.product-list .product-item img {
+  width: 70%;
+  height: 70%;
+  border-radius: 5px;
+}
+
+/* .product-list .product-item h4 {
+  color: #098178;
+  margin: 20px 0;
+} */
 
 .product-heading {
   font-size: 1.5rem;
@@ -330,24 +348,58 @@ footer .container {
   margin-right: auto;
 }
 
+File CSS riêng cho Slidebar
+
+.slidebar-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
 .slidebar-content {
   display: flex;
-  transition: transform 0.3s ease-in-out;
+  animation: slideAnimation 30s linear infinite;
+  animation-play-state: running;
 }
 
-.slidebar-content img {
-  width: 600px;
-  height: 500px;
+.slidebar-content.paused {
+  animation-play-state: paused;
 }
 
-.slidebar-content:hover {
-  transition: transform 0.3s ease-in-out;
-  transform: translateX(-600px);
-  cursor: pointer;
+.slidebar-item {
+  flex: 0 0 auto;
+  margin: 0 10px;
+  transition: transform 0.3s ease;
+}
+
+.slidebar-item img {
+  width: 200px;
+  height: auto;
+  object-fit: cover;
+}
+
+.slidebar-item:hover {
+  transform: scale(1.05);
+}
+
+@keyframes slideAnimation {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 @media (max-width: 768px) {
   .menu {
     display: none;
+  }
+  .user {
+    display: none;
+  }
+  .slidebar-content img {
+    width: 300px;
+    height: 200px;
   }
   /* .menu-items-rp{
   display: block;
